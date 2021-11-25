@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useFormik } from "formik";
+import { validateForm } from './App';
 
 export function AddMotorBike() {
   // useHistory to change page link(Navigation purpose)
@@ -31,8 +33,18 @@ export function AddMotorBike() {
     }).then(() => history.push("/motorbikes"));
   };
 
+  // useFormik used for validation of the form used to add bike
+  const formik = useFormik({
+    initialValues: { brand: "", modal: "", description: "", engine: "", price: "", url: "" },
+    validate: validateForm,
+    onSubmit: (values) => {
+      console.log("onSubmit", values);
+      addBike();
+    }
+  });
+
   return (
-    <div className="add-bike-form">
+    <form className="add-bike-form" onSubmit={formik.handleSubmit}>
       <Button onClick={() => history.goBack()}
         variant="oulined"
         style={{ color: "#000", marginRight: "auto" }}
@@ -42,13 +54,73 @@ export function AddMotorBike() {
       <Typography gutterBottom variant="h5" component="div" color="#000" sx={{ textAlign: 'center', textTransform: "uppercase" }}>
         Add Bike Info
       </Typography>
-      <TextField value={brand} onChange={(event) => setBrand(event.target.value)} label="Enter Car Brand" variant="outlined" />
-      <TextField value={modal} onChange={(event) => setModal(event.target.value)} label="Enter Modal Name" variant="outlined" />
-      <TextField value={description} onChange={(event) => setDescription(event.target.value)} label="Description" variant="outlined" />
-      <TextField value={engine} onChange={(event) => setEngine(event.target.value)} label="Engine Modal" variant="outlined" />
-      <TextField value={price} onChange={(event) => setPrice(event.target.value)} label="Price" variant="outlined" />
-      <TextField value={url} onChange={(event) => setUrl(event.target.value)} label="Image URL" variant="outlined" />
-      <Button onClick={addBike} variant="contained" style={{ background: "#000" }}>Add</Button>
-    </div>
+      <TextField
+        id="name" name="brand" value={formik.values.brand} type="text"
+        onChange={(event) => {
+          formik.handleChange(event);
+          setBrand(event.target.value);
+        }}
+        onBlur={formik.handleBlur}
+        helperText={formik.errors.brand && formik.touched.brand && formik.errors.brand}
+        error={formik.errors.brand && formik.touched.brand && formik.errors.brand !== ""}
+        label="Enter Bike Brand" variant="outlined"
+      />
+      <TextField
+        id="name" name="modal" value={formik.values.modal} type="text"
+        onChange={(event) => {
+          formik.handleChange(event);
+          setModal(event.target.value);
+        }}
+        onBlur={formik.handleBlur}
+        helperText={formik.errors.modal && formik.touched.modal && formik.errors.modal}
+        error={formik.errors.modal && formik.touched.modal && formik.errors.modal !== ""}
+        label="Enter Modal Name" variant="outlined"
+      />
+      <TextField
+        id="name" name="description" value={formik.values.description} type="text"
+        onChange={(event) => {
+          formik.handleChange(event);
+          setDescription(event.target.value);
+        }}
+        onBlur={formik.handleBlur}
+        helperText={formik.errors.description && formik.touched.description && formik.errors.description}
+        error={formik.errors.description && formik.touched.description && formik.errors.description !== ""}
+        label="Description" variant="outlined"
+      />
+      <TextField
+        id="name" name="engine" value={formik.values.engine} type="text"
+        onChange={(event) => {
+          formik.handleChange(event);
+          setEngine(event.target.value);
+        }}
+        onBlur={formik.handleBlur}
+        helperText={formik.errors.engine && formik.touched.engine && formik.errors.engine}
+        error={formik.errors.engine && formik.touched.engine && formik.errors.engine !== ""}
+        label="Engine Modal" variant="outlined"
+      />
+      <TextField
+        id="name" name="price" value={formik.values.price} type="text"
+        onChange={(event) => {
+          formik.handleChange(event);
+          setPrice(event.target.value);
+        }}
+        onBlur={formik.handleBlur}
+        helperText={formik.errors.price && formik.touched.price && formik.errors.price}
+        error={formik.errors.price && formik.touched.price && formik.errors.price !== ""}
+        label="Price" variant="outlined"
+      />
+      <TextField
+        id="name" name="url" value={formik.values.url} type="url"
+        onChange={(event) => {
+          formik.handleChange(event);
+          setUrl(event.target.value);
+        }}
+        onBlur={formik.handleBlur}
+        helperText={formik.errors.url && formik.touched.url && formik.errors.url}
+        error={formik.errors.url && formik.touched.url && formik.errors.url !== ""}
+        label="Image URL" variant="outlined"
+      />
+      <Button type="submit" variant="contained" style={{ background: "#000" }}>Add</Button>
+    </form>
   );
 }

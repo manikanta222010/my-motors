@@ -56,6 +56,29 @@ export default function App() {
 
 export const validateForm = (values) => {
   const errors = {}
-
+  if (values.brand.length === 0) {
+    errors.brand = 'Required';
+  }
+  if (values.modal.length === 0) {
+    errors.modal = 'Required';
+  }
+  if (values.description.length === 0) {
+    errors.description = 'Required';
+  }
+  if (values.engine.length === 0) {
+    errors.engine = 'Required';
+  }
+  // if (values.bodystyle.length === 0) {
+  //   errors.bodystyle = 'Required';
+  // }
+  // if (values.classtype.length === 0) {
+  //   errors.classtype = 'Required';
+  // }
+  if (values.price.length === 0) {
+    errors.price = 'Required';
+  }
+  if (values.url.length === 0) {
+    errors.url = 'Required';
+  }
   return errors
 }

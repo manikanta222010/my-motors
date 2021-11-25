@@ -8,7 +8,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { validateForm } from './App';
 
 export function EditCar() {
-// useParams to get id from link of the car
+  // useParams to get id from link of the car
   const { id } = useParams();
 
   // useState on cars to take care of updation of that variable
@@ -25,10 +25,10 @@ export function EditCar() {
 
 
 function UpdateCar({ car }) {
-// useHistory to change page link(Navigation purpose)
+  // useHistory to change page link(Navigation purpose)
   const history = useHistory();
 
-// useState on every category of data to take care of updation of that particular variable 
+  // useState on every category of data to take care of updation of that particular variable 
   const [brand, setBrand] = useState(car.brand);
   const [modal, setModal] = useState(car.modal);
   const [description, setDescription] = useState(car.description);
@@ -53,7 +53,7 @@ function UpdateCar({ car }) {
     ).then(() => history.push("/cars"));
   };
 
-// useFormik used for validation of the form used to add car
+  // useFormik used for validation of the form used to add car
   const formik = useFormik({
     initialValues: { brand: brand, modal: modal, description: description, engine: engine, bodystyle: bodystyle, classtype: classtype, price: price, url: url },
     validate: validateForm,
@@ -64,7 +64,7 @@ function UpdateCar({ car }) {
   });
 
   return (
-    <form className="add-bike-form" onSubmit={formik.handleSubmit}>
+    <form className="add-car-form" onSubmit={formik.handleSubmit}>
       <Button onClick={() => history.goBack()}
         variant="oulined"
         style={{ color: "#000", marginRight: "auto" }}
@@ -75,7 +75,7 @@ function UpdateCar({ car }) {
         Edit Car Info
       </Typography>
       <TextField
-        id="name" name="name" value={formik.values.brand} type="text"
+        id="name" name="brand" value={formik.values.brand} type="text"
         onChange={(event) => {
           formik.handleChange(event);
           setBrand(event.target.value);
@@ -83,9 +83,9 @@ function UpdateCar({ car }) {
         onBlur={formik.handleBlur}
         helperText={formik.errors.brand && formik.touched.brand && formik.errors.brand}
         error={formik.errors.brand && formik.touched.brand && formik.errors.brand !== ""}
-        label="Enter Car Brand" variant="standard" />
+        label="Enter Car Brand" variant="outlined" />
       <TextField
-        id="name" name="name" value={formik.values.modal} type="text"
+        id="name" name="modal" value={formik.values.modal} type="text"
         onChange={(event) => {
           formik.handleChange(event);
           setModal(event.target.value);
@@ -93,9 +93,9 @@ function UpdateCar({ car }) {
         onBlur={formik.handleBlur}
         helperText={formik.errors.modal && formik.touched.modal && formik.errors.modal}
         error={formik.errors.modal && formik.touched.modal && formik.errors.modal !== ""}
-        label="Enter Modal Name" variant="standard" />
+        label="Enter Modal Name" variant="outlined" />
       <TextField
-        id="name" name="name" value={formik.values.description} type="text"
+        id="name" name="description" value={formik.values.description} type="text"
         onChange={(event) => {
           formik.handleChange(event);
           setDescription(event.target.value);
@@ -103,9 +103,9 @@ function UpdateCar({ car }) {
         onBlur={formik.handleBlur}
         helperText={formik.errors.description && formik.touched.description && formik.errors.description}
         error={formik.errors.description && formik.touched.description && formik.errors.description !== ""}
-        label="Description" variant="standard" />
+        label="Description" variant="outlined" />
       <TextField
-        id="name" name="name" value={formik.values.engine} type="text"
+        id="name" name="engine" value={formik.values.engine} type="text"
         onChange={(event) => {
           formik.handleChange(event);
           setEngine(event.target.value);
@@ -113,9 +113,9 @@ function UpdateCar({ car }) {
         onBlur={formik.handleBlur}
         helperText={formik.errors.engine && formik.touched.engine && formik.errors.engine}
         error={formik.errors.engine && formik.touched.engine && formik.errors.engine !== ""}
-        label="Engine Modal" variant="standard" />
+        label="Engine Modal" variant="outlined" />
       <TextField
-        id="name" name="name" value={formik.values.bodystyle} type="text"
+        id="name" name="bodystyle" value={formik.values.bodystyle} type="text"
         onChange={(event) => {
           formik.handleChange(event);
           setBodystyle(event.target.value);
@@ -123,9 +123,9 @@ function UpdateCar({ car }) {
         onBlur={formik.handleBlur}
         helperText={formik.errors.bodystyle && formik.touched.bodystyle && formik.errors.bodystyle}
         error={formik.errors.bodystyle && formik.touched.bodystyle && formik.errors.bodystyle !== ""}
-        label="Body Style" variant="standard" />
+        label="Body Style" variant="outlined" />
       <TextField
-        id="name" name="name" value={formik.values.classtype} type="text"
+        id="name" name="classtype" value={formik.values.classtype} type="text"
         onChange={(event) => {
           formik.handleChange(event);
           setClasstype(event.target.value);
@@ -133,9 +133,9 @@ function UpdateCar({ car }) {
         onBlur={formik.handleBlur}
         helperText={formik.errors.classtype && formik.touched.classtype && formik.errors.classtype}
         error={formik.errors.classtype && formik.touched.classtype && formik.errors.classtype !== ""}
-        label="Class-Type" variant="standard" />
+        label="Class-Type" variant="outlined" />
       <TextField
-        id="name" name="name" value={formik.values.price} type="text"
+        id="name" name="price" value={formik.values.price} type="text"
         onChange={(event) => {
           formik.handleChange(event);
           setPrice(event.target.value);
@@ -143,9 +143,9 @@ function UpdateCar({ car }) {
         onBlur={formik.handleBlur}
         helperText={formik.errors.price && formik.touched.price && formik.errors.price}
         error={formik.errors.price && formik.touched.price && formik.errors.price !== ""}
-        label="Price" variant="standard" />
+        label="Price" variant="outlined" />
       <TextField
-        id="name" name="name" value={formik.values.url} type="text"
+        id="name" name="url" value={formik.values.url} type="url"
         onChange={(event) => {
           formik.handleChange(event);
           setUrl(event.target.value);
@@ -153,7 +153,7 @@ function UpdateCar({ car }) {
         onBlur={formik.handleBlur}
         helperText={formik.errors.url && formik.touched.url && formik.errors.url}
         error={formik.errors.url && formik.touched.url && formik.errors.url !== ""}
-        label="Image URL" variant="standard" />
+        label="Image URL" variant="outlined" />
 
       <Button type="submit" variant="contained" style={{ background: "#000" }}>Update</Button>
     </form>

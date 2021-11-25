@@ -66,7 +66,7 @@ h1{
 
 
 
-.add-bike-form{
+.add-bike-form, .add-car-form{
   margin: 20px;
   display: flex;
   gap: 10px;

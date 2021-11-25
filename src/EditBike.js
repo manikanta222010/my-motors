@@ -73,7 +73,7 @@ function UpdateBike({ bike }) {
         Edit Bike Info
       </Typography>
       <TextField
-        id="name" name="name" value={formik.values.brand} type="text"
+        id="name" name="brand" value={formik.values.brand} type="text"
         onChange={(event) => {
           formik.handleChange(event);
           setBrand(event.target.value);
@@ -81,9 +81,10 @@ function UpdateBike({ bike }) {
         onBlur={formik.handleBlur}
         helperText={formik.errors.brand && formik.touched.brand && formik.errors.brand}
         error={formik.errors.brand && formik.touched.brand && formik.errors.brand !== ""}
-        label="Enter Bike Brand" variant="standard" />
+        label="Enter Bike Brand" variant="outlined"
+      />
       <TextField
-        id="name" name="name" value={formik.values.modal} type="text"
+        id="name" name="modal" value={formik.values.modal} type="text"
         onChange={(event) => {
           formik.handleChange(event);
           setModal(event.target.value);
@@ -91,9 +92,10 @@ function UpdateBike({ bike }) {
         onBlur={formik.handleBlur}
         helperText={formik.errors.modal && formik.touched.modal && formik.errors.modal}
         error={formik.errors.modal && formik.touched.modal && formik.errors.modal !== ""}
-        label="Enter Modal Name" variant="standard" />
+        label="Enter Modal Name" variant="outlined"
+      />
       <TextField
-        id="name" name="name" value={formik.values.description} type="text"
+        id="name" name="description" value={formik.values.description} type="text"
         onChange={(event) => {
           formik.handleChange(event);
           setDescription(event.target.value);
@@ -101,9 +103,10 @@ function UpdateBike({ bike }) {
         onBlur={formik.handleBlur}
         helperText={formik.errors.description && formik.touched.description && formik.errors.description}
         error={formik.errors.description && formik.touched.description && formik.errors.description !== ""}
-        label="Description" variant="standard" />
+        label="Description" variant="outlined"
+      />
       <TextField
-        id="name" name="name" value={formik.values.engine} type="text"
+        id="name" name="engine" value={formik.values.engine} type="text"
         onChange={(event) => {
           formik.handleChange(event);
           setEngine(event.target.value);
@@ -111,9 +114,10 @@ function UpdateBike({ bike }) {
         onBlur={formik.handleBlur}
         helperText={formik.errors.engine && formik.touched.engine && formik.errors.engine}
         error={formik.errors.engine && formik.touched.engine && formik.errors.engine !== ""}
-        label="Engine Modal" variant="standard" />
+        label="Engine Modal" variant="outlined"
+      />
       <TextField
-        id="name" name="name" value={formik.values.price} type="text"
+        id="name" name="price" value={formik.values.price} type="text"
         onChange={(event) => {
           formik.handleChange(event);
           setPrice(event.target.value);
@@ -121,9 +125,10 @@ function UpdateBike({ bike }) {
         onBlur={formik.handleBlur}
         helperText={formik.errors.price && formik.touched.price && formik.errors.price}
         error={formik.errors.price && formik.touched.price && formik.errors.price !== ""}
-        label="Price" variant="standard" />
+        label="Price" variant="outlined"
+      />
       <TextField
-        id="name" name="name" value={formik.values.url} type="text"
+        id="name" name="url" value={formik.values.url} type="url"
         onChange={(event) => {
           formik.handleChange(event);
           setUrl(event.target.value);
@@ -131,7 +136,8 @@ function UpdateBike({ bike }) {
         onBlur={formik.handleBlur}
         helperText={formik.errors.url && formik.touched.url && formik.errors.url}
         error={formik.errors.url && formik.touched.url && formik.errors.url !== ""}
-        label="Image URL" variant="standard" />
+        label="Image URL" variant="outlined"
+      />
 
       <Button type="submit" variant="contained" style={{ background: "#000" }}>Update</Button>
     </form>
